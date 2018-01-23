@@ -1,3 +1,3 @@
-# EEG Processing
+# EEG Clustering
 
 All EEG data should be in a folder labeled "datafolder"
