@@ -4,7 +4,7 @@ name = {FileList.name}.';
 
 numsamples = input('How many samples?');
 
-bound = length(name) - numsamples;
+bound = length(name) - numsamples + 1;
 subset = randi(bound,1,1);
 
 i = 1;

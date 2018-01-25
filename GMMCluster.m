@@ -1,9 +1,14 @@
 k = 7
 
 options = statset('Display','final');
-gm = fitgmdist(P1',k,'Options',options, 'RegularizationValue', 0.1)
+gm = fitgmdist(subP1',k);
 
-idx = cluster(gm, P1);
+idx = cluster(gm, subP1');
 
-t = 1:length(idx);
+
+subplot(2,1,1);
+samps = (subset*10000):((subset*10000)+totallength - 1);
+plot(samps, waves);
+
+subplot(2,1,2);
 plot(t, idx);

@@ -10,3 +10,5 @@ for i = 1:9
     subplot(3,3,i);
     plot(f,P1(:,i))
 end
+
+subP1 = P1(2:55, :);

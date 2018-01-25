@@ -1,4 +1,4 @@
-idx = kmeans(P1',7);
+idx = kmeans(subP1',7);
 t = subset:(subset+numsamples-1);
 
 totallength = size(data,1) * size(data,2);
