@@ -1,5 +1,5 @@
 options = statset('Display','final');
-gm = fitgmdist(subP1',numbins, 'RegularizationValue', 0.001);
+gm = fitgmdist(subP1',numbins, 'RegularizationValue', 0.0005);
 
 idx = cluster(gm, subP1');
 

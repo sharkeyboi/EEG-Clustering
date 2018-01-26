@@ -1,6 +1,7 @@
 fftdata = fft(data);
 Fs = 1000;
 L = 10000;
+
 P2 = abs(fftdata/L);
 P1 = P2(1:L/2+1,:);
 P1(2:end-1) = 2*P1(2:end-1);
