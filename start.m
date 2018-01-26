@@ -1,5 +1,5 @@
 run LoadData;
 run transformdata;
-run kmeanscluster;
 run GMMCluster;
-%run plotoffset;
+run newclustering;
+run plotclusters;
