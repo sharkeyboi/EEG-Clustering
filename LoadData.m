@@ -3,8 +3,10 @@ FileList = dir('*.mat');
 name = {FileList.name}.';
 maxSamples = 5207;
 
-numsnippets = input('How many samples? (Must be greater than 5001)\n');
+numsnippets = input('How many samples? (Must be greater than max frequency)\n');
 numbins = input('How many bins?\n');
+seed = input('Random Seed?');
+rng(seed);
 
 
 bound = length(name) - numsnippets + 1;
