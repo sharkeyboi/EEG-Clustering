@@ -1,5 +1,6 @@
+function [subP1] = transformdata(data, numsnippets)
 Fs = 1000;
-L = 10000;
+L = length(data);
 
 
 fftdata = fft(data);
@@ -17,9 +18,11 @@ fMax = min(fMax,750);
 f = f(2:fMax);
 
 subP1 = P1(2:fMax, :);
-figure;
-for i = 1:9
-    subplot(3,3,i);
-    plot(f,subP1(:,i))
-end
+% figure;
+% for i = 1:9
+%     subplot(3,3,i);
+%     plot(f,subP1(:,i))
+% end
 
+subP1 = subP1';
+end

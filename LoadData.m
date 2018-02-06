@@ -1,18 +1,13 @@
+
 cd datafolder
 FileList = dir('*.mat');
 name = {FileList.name}.';
 maxSamples = 5207;
 
-numsnippets = input('How many samples? (Must be greater than max frequency)\n');
-numbins = input('How many bins?\n');
-seed = input('Random Seed?');
-rng(seed);
-
 
 bound = length(name) - numsnippets + 1;
 subset = randi(bound,1,1);
 
-i = 1;
 clear data;
 
 data = zeros(10000, maxSamples);
@@ -34,8 +29,6 @@ numsnippets = newNumSamples;
 data = data(:,subset:(subset+numsnippets-1));
 max(max(abs(data)))
 
-
-%Resize data matrix to match numsamples
 
 
 %Resize the number of samples and create flattened sample array
