@@ -1,10 +1,14 @@
-function [] = plotclusters(totalwave,numBins, clusteredWave)
+function [] = plotcolors(totalwave,numBins, clusteredWave, colors)
 figure;
 subaxis(8,1,1, 'SpacingVert', 0);
+firstwave = totalwave;
+firstwave(colors) = 0;
+plot(firstwave);
+secondwave = zeros(length(totalwave),1);
+secondwave(colors) = totalwave(colors);
+hold on;
+plot(secondwave);
 
-
-
-plot(1:length(totalwave), totalwave);
 ylabel('Wave');
 
 set(gca,'xtick',[])

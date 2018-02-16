@@ -2,7 +2,7 @@ totidx = zeros(length(idx), numbins);
 for i=1: numbins
    curidx = idx;
    curidx(curidx ~= i) = 0;
-   curidx(curidx == 1) = 1;
+   curidx(curidx == i) = 1;
    totidx(:,i) = curidx;
 end
 

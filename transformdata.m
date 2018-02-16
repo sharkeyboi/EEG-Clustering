@@ -13,7 +13,7 @@ P1(2:end-1) = 2*P1(2:end-1);
 f = Fs*(0:(L/2))/L;
 
 fMax = min(size(P1,1), numsnippets);
-fMax = min(fMax,750);
+fMax = min(fMax,5000);
 
 f = f(2:fMax);
 
