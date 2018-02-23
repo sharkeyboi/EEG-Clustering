@@ -1,8 +1,8 @@
 function [avg] = runtestdata(numbins, regpar, numsnippets, seed)
 score = 0;
-for trial=1 : 30
+for trial=1 : 2
     rng(seed(trial));
-    run LoadData
+    run LoadSavedData
     subP1 = transformdata(data, numsnippets);
     %kidx1 = kmeans(subP1, numbins);
     %kidx2 = kmeans(subP1, numbins);
