@@ -3,8 +3,8 @@
 numsnippets = input('How many samples? (Must be greater than max frequency)\n');
 
 %2 bins highest accuracy in parameter search
-numbins = input('How many bins?\n');
-seed = input('Random Seed?');
+numbins = 2 %input('How many bins?\n');
+seed = 99   %input('Random Seed?');
 rng(seed);
 
 %Regularization parameter selected from parameter search

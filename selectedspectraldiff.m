@@ -1,4 +1,4 @@
-
+% Plot difference between selcted data points against the whole dataset
 cluster1 = subP1(idx==1,:);
 cluster2 = subP1(idx==2,:);
 selectedcluster = subP1(indices,:);

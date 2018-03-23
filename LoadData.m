@@ -34,7 +34,7 @@ max(max(abs(data)))
 fs= 1000;
 
 %Remove the Line Noise from the data. TODO: Parameter study
-data = RemoveLineNoise(data',fs,'LF = 60,NH = 5');
+data = RemoveLineNoise(data',fs,'LF = 60,NH = 9');
 data = data';
 
 %Resize the number of samples and create flattened sample array

@@ -1,3 +1,4 @@
+% Run kmeans clustering on power spectra and plot sample
 idx = kmeans(subP1',7);
 t = subset:(subset+numsamples-1);
 

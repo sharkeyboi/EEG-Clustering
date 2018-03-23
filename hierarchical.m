@@ -1,3 +1,4 @@
+% Create test data
 MU = [-2 2];
 MU2 = [2 -2];
 SIGMA = [0.5 0;0 0.5];
@@ -14,6 +15,8 @@ testdata = [R1; R2; R3];
 scatter(testdata(:,1), testdata(:,2));
 
 figure;
+
+% Compute hierarchical clusters and plot
 Y = pdist(testdata);
 Z = linkage(Y, 'complete');
 testidx = cluster(Z,'maxclust',3);

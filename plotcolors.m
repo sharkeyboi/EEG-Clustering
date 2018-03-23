@@ -1,6 +1,9 @@
 function [] = plotcolors(totalwave,numBins, clusteredWave, colors)
 figure;
-subaxis(8,1,1, 'SpacingVert', 0);
+
+% Plots the waveforms as separate
+% lines on the same plot so the the selection is a different color
+subaxis(numBins+1,1,1, 'SpacingVert', 0);
 firstwave = totalwave;
 firstwave(colors) = 0;
 plot(firstwave);
@@ -16,9 +19,10 @@ set(gca,'xticklabel',[])
 set(gca,'YTickLabel',[]);
 axis([0 inf -2 2]);
 
+% Plots the waves
 for i=2:numBins+1
 
-    subaxis(8,1,i, 'SpacingVert', 0);
+    subaxis(numBins+1,1,i, 'SpacingVert', 0);
     plot(1:length(totalwave), clusteredWave(:,:,i-1));
     axis([0 inf -2 2]);
     ylabel(i-1);

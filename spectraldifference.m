@@ -1,3 +1,4 @@
+% Plots mean of data and std (shaded)
 figure
 cluster1 = subP1(idx==1,:);
 cluster2 = subP1(idx==2,:);

@@ -1,3 +1,4 @@
+%Prepare the cluster data to be presented as separate waveforms
 totidx = zeros(length(idx), numbins);
 for i=1: numbins
    curidx = idx;
