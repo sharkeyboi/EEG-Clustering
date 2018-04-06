@@ -41,3 +41,11 @@ data = data';
 totallength = size(data,1) * size(data,2);
 
 waves = reshape(data, [totallength, 1]);
+sigma = 20;
+sz = 30;    % length of gaussFilter vector
+x = linspace(-sz / 2, sz / 2, sz);
+gaussFilter = exp(-x .^ 2 / (2 * sigma ^ 2));
+gaussFilter = gaussFilter / sum (gaussFilter); % normalize
+filtereddata = filter(gaussFilter,1,waves);
+
+data = reshape(waves, [10000, numsnippets]);
