@@ -16,10 +16,4 @@ gaussFilter = gaussFilter / sum (gaussFilter);
 pxx = filter(gaussFilter,1,pxx,[],2);
 
 
-% pxx = smoothed;
-
-% title('Periodogram Using FFT')
-% xlabel('Frequency (Hz)')
-% ylabel('Power/Frequency (dB/Hz)')
-
 end

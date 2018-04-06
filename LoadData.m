@@ -44,7 +44,7 @@ denoisedData = denoisedData';
 %Line Noise Removal introduces NaN column at 5137 and imaginary numbers.
 data = real(denoisedData);
 data = [data(:,1:5136) data(:,5138:end)];
-
+numsnippets = 5138;
 %Resize the number of samples and create flattened sample array
 totallength = size(data,1) * size(data,2);
 
