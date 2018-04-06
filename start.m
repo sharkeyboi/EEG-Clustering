@@ -16,7 +16,7 @@ run LoadData;
 subP1 = transformdata(data, numsnippets);
 
 %Use GMM Clustering to create vector of cluster assignments
-idx = GMMCluster(subP1, numbins, regparam);
+idx = GMMCluster(pxx', numbins, regparam);
 
 
 %Creates matrix of waveforms grouped by cluster and plots
