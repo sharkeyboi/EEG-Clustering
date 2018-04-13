@@ -1,0 +1,2 @@
+1 = RemoveNoise(pxx, 3);
+idx1 = GMMCluster(newpxx'

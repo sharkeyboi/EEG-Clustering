@@ -15,5 +15,8 @@ gaussFilter = exp(-x .^ 2 / (2 * sigma ^ 2));
 gaussFilter = gaussFilter / sum (gaussFilter);
 pxx = filter(gaussFilter,1,pxx,[],2);
 
+%%Only keep frequencies through 100 Hz
+pxx = pxx(2:1001,:);
+f = f(2:1001);
 
 end

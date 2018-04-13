@@ -22,4 +22,3 @@ colors = reshape(result, length(indices)*10000, 1);
 
 plotcolors(waves,2,clusteredwaves,colors);
 
-

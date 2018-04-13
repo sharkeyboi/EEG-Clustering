@@ -1,1 +1,1 @@
-Y = tsne(subP1);
+Y = tsne(pxx');
