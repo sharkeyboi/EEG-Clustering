@@ -1,11 +1,9 @@
-function [avg] = runtestdata(numbins, regpar, numsnippets, seed)
+function [avg] = runtestdata(numbins, regpar, seed)
 score = 0;
 for trial=1 : 2
     rng(seed(trial));
     run LoadSavedData
-    subP1 = transformdata(data, numsnippets);
-    %kidx1 = kmeans(subP1, numbins);
-    %kidx2 = kmeans(subP1, numbins);
+    subP1 = transformdata(data);
     idx1 = GMMCluster(subP1, numbins, regpar);
     rng(seed(trial)+99);
     idx2 = GMMCluster(subP1, numbins, regpar);

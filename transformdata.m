@@ -1,4 +1,4 @@
-function [pxx, f] = transformdata(dataset, numsnippets)
+function [pxx, f] = transformdata(dataset)
 
 
 %%%%%%%%%%%% Periodogram %%%%%%%%%%%%%

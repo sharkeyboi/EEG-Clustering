@@ -20,5 +20,5 @@ end
 % Flatten for plotting
 colors = reshape(result, length(indices)*10000, 1);
 
-plotcolors(waves,2,clusteredwaves,colors);
+plotcolors(waves,2,moreclusters,colors);
 
