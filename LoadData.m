@@ -35,20 +35,18 @@ end
 numsnippets = newNumSamples;
 data = data(:,subset:(subset+numsnippets-1));
 
-%Verify the maximum of the data after denoising
-max(max(abs(data)))
-% fs= 1000;
+fs= 1000;
 % %Remove the Line Noise from the data. TODO: Parameter study
-% denoisedData = RemoveLineNoise(data',fs,'LF = 60,NH = 8');
-% denoisedData = denoisedData';
-% 
-% %Line Noise Removal introduces NaN column at 5137 and imaginary numbers.
-% data = real(denoisedData);
-% data = [data(:,1:5136) data(:,5138:end)];
-% numsnippets = 5138;
+denoisedData = RemoveLineNoise(data',fs,'LF = 60,NH = 8');
+denoisedData = denoisedData';
+
+%Line Noise Removal introduces NaN column at 5137 and imaginary numbers.
+data = real(denoisedData);
+data = [data(:,1:5136) data(:,5138:end)];
+numsnippets = 5138;
 %Resize the number of samples and create flattened splotclusters(ample array
-% totallength = size(data,1) * size(data,2);
-% 
-% waves = reshape(data, [totallength, 1]);
+totallength = size(data,1) * size(data,2);
+
+waves = reshape(data, [totallength, 1]);
 
 end
