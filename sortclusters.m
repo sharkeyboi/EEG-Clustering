@@ -1,22 +1,25 @@
+stds = [];
 for itr=1:7
-   temp = Iblur(:,find(idx==itr));
-   means(:,itr) =  mean(temp,2);
+   temp = data(:,find(idx==itr));
+   stds(:,itr) =  std(temp,0,2);
 end
 for itr=1:7
     for jtr=1:7
-        distances(itr,jtr) = norm(means(:,itr) - means(:,jtr));
+        distances(itr,jtr) = norm(stds(:,itr) - stds(:,jtr));
     end
 end
 distances = distances * -1;
 solved = munkres(distances);
 
+stds2 = [];
+
 for itr=1:7
-   temp2 = Iblur(:,find(kidx==itr));
-   means2(:,itr) =  mean(temp2,2);
+   temp2 = data(:,find(kidx==itr));
+   stds2(:,itr) =  std(temp2,0,2);
 end
 for itr=1:7
     for jtr=1:7
-        distances2(itr,jtr) = norm(means2(:,itr) - means2(:,jtr));
+        distances2(itr,jtr) = norm(stds2(:,itr) - stds2(:,jtr));
     end
 end
 distances2 = distances2 * -1;

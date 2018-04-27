@@ -1,4 +1,4 @@
-function [P, idx] = GMMCluster(dataset, k, regval)
+function [idx,P] = GMMCluster(dataset, k, regval)
 
 if regval == 0
     disp('No regparam');
