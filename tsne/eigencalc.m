@@ -1,11 +1,12 @@
-% %Reduce subP1 into a square matrix
+% %Reduce squarepxx into a square matrix
 
-numtosquare = size(subP1,1) - size(subP1,2);
+squarepxx = pxx';
+numtosquare = size(squarepxx,1) - size(squarepxx,2);
 
-subP1 = subP1(numtosquare+1:end,:);
+squarepxx = squarepxx(numtosquare+1:end,:);
 
 % Calculate covariance matrix
-covariance = cov(subP1);
+covariance = cov(squarepxx);
 
    % Calculate eigenvalues
 disp('Covariance');
@@ -23,3 +24,4 @@ disp('Covariance');
  plot(elbow(1:100));
  xlabel('Principle Components');
  ylabel('Variance');
+ squarepxx = squarepxx';

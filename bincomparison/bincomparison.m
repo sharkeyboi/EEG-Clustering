@@ -15,6 +15,7 @@ cost = cost * -1;
 
 solved = munkres(cost);
 
+
 cost = cost * -1;
 
 costnumber = 0;
