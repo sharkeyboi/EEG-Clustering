@@ -3,7 +3,7 @@ scatter(Y(:,1),Y(:,2), 1);
 hold on;
 
 % Scatterplot colored by 3rd parameter values (by cluster)
-ignoredata = gscatter(Y(:,1),Y(:,2),idx);
+ignoredata = gscatter(Y(:,1),Y(:,2),idx, C,'.',10);
 
 % Select points wanted to highlight
 indices = selectdata('selectionmode','lasso', 'ignore',ignoredata);

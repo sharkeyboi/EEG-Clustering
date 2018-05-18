@@ -1,9 +1,9 @@
 % %Reduce squarepxx into a square matrix
 
 squarepxx = pxx';
-numtosquare = size(squarepxx,1) - size(squarepxx,2);
-
-squarepxx = squarepxx(numtosquare+1:end,:);
+% numtosquare = size(squarepxx,1) - size(squarepxx,2);
+% 
+% squarepxx = squarepxx(numtosquare+1:end,:);
 
 % Calculate covariance matrix
 covariance = cov(squarepxx);
