@@ -1,4 +1,4 @@
-function [] = plotclusters(totalwave,numBins, clusteredWave,solved)
+function [] = plotclusters(totalwave,numBins, clusteredWave)
 figure;
 C = {'k','b','r','g','y','c','m'};
 subaxis(numBins+1,1,1, 'SpacingVert', 0);
@@ -17,7 +17,7 @@ axis([0 inf -2 2]);
 for i=2:numBins+1
 
     subaxis(numBins+1,1,i, 'SpacingVert', 0);
-    plot(1:length(totalwave), clusteredWave(:,:,solved(i-1)),'Color',C{i-1});
+    plot(1:length(totalwave), clusteredWave(:,:,i-1),'Color',C{i-1});
     axis([0 inf -2 2]);
     ylabel(i-1);
     if i < numBins+1

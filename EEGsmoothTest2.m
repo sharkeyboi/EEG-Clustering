@@ -1,5 +1,6 @@
 blurSize = 55;
 numbins = 7;
+
 nClust = numbins%11;
 % maxBin = 700;
 Fs = 1000;
@@ -18,7 +19,7 @@ IDX = [];
 % Iblur = imgaussfilt(allSPEC(1:maxBin,:), blurSize);
 
 % Iblur = medfilt2(allSPEC(1:maxBin,:),[1 blurSize]);
-Iblur = medfilt2(log(subP1),[11 blurSize]);
+Iblur = medfilt2(log(pxx),[11 blurSize]);
 
 
 
