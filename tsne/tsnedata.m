@@ -1,5 +1,7 @@
 figure;
-C = ['k','b','r','g','y','c','m'];
+cmap = colormap('jet');
+interval = floor(64/numbins);
+C = cmap(64:-interval:1,:);
 scatter(Y(:,1),Y(:,2),1);
 hold on;
 ignoredata = gscatter(Y(:,1),Y(:,2),idx, C,'.',10);

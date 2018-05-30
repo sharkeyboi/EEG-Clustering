@@ -1,4 +1,4 @@
-function [Iblur, f, pcascore] = transformdata(dataset, smoothing)
+function [pxx, f, pcascore, explained] = transformdata(dataset, smoothing)
 
 
 %%%%%%%%%%%% Periodogram %%%%%%%%%%%%%
@@ -6,25 +6,33 @@ rng default
 Fs = 1000;
 
 
+% Nfft = next largest power of 2 greater than length of dataset
 [pxx,f] = periodogram(dataset,hann(length(dataset)),length(dataset),Fs);
 
-% sigma = 80;
-% sz = 30;    % length of gaussFilter vector
-% x = linspace(-sz / 2, sz / 2, sz);
-% gaussFilter = exp(-x .^ 2 / (2 * sigma ^ 2));
-% gaussFilter = gaussFilter / sum (gaussFilter);
-% pxx = filter(gaussFilter,1,10*log(pxx),[],2);
+%[pxx,f] = periodogram(dataset,hann(length(dataset)),Fs,Fs);
+pxx = log(pxx);
 
-pxx = imgaussfilt(log(pxx),smoothing);
+pxx = imgaussfilt(pxx,smoothing);
 
-%%Only keep frequencies through 100 Hz
-pxx = pxx(1:401,:);
-f = f(1:401);
+%Only keep frequencies through 100 Hz
+pxx = pxx(1:400,:);
+f = f(1:400);
 %% Optional: amplify differences, by subtracting the mean spectrum
-Iblur = pxx-repmat(mean(pxx,2),[1 size(pxx,2)]);
+pxx = pxx-repmat(mean(pxx,2),[1 size(pxx,2)]);
 
 %% Optional: zscore (whiten) the spectra
-Iblur = zscore(Iblur,[],1);
+pxx = zscore(pxx,[],1);
 
-[coeff,pcascore]= pca(Iblur');
+[~,pcascore,~,~,explained] = pca(pxx');
+
+% For calculating based on the bands
+% delta = mean(pxx(find(f<4),:));
+% theta = mean(pxx(find(f<=8 & f>=4),:));
+% alpha = mean(pxx(find(f>=7.5 & f<=12.5),:));
+% beta = mean(pxx(find(f>=13 & f<=30),:));
+% lgamma = mean(pxx(find(f>=30 & f<=70),:));
+% hgamma = mean(pxx(find(f>=70 & f<=150),:));
+% bands = [delta; theta; alpha; beta; lgamma; hgamma];
+% 
+% bands = imgaussfilt(bands,smoothing);
 end

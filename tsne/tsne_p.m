@@ -1,4 +1,4 @@
-function ydata = tsne_p(P, labels, no_dims)
+function [ydata cost] = tsne_p(P, labels, no_dims)
 %TSNE_P Performs symmetric t-SNE on affinity matrix P
 %
 %   mappedX = tsne_p(P, labels, no_dims)

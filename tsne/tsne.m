@@ -1,4 +1,4 @@
-function ydata = tsne(X, labels, no_dims, initial_dims, perplexity)
+function [ydata cost] = tsne(X, labels, no_dims, initial_dims, perplexity)
 %TSNE Performs symmetric t-SNE on dataset X
 %
 %   mappedX = tsne(X, labels, no_dims, initial_dims, perplexity)
@@ -84,8 +84,8 @@ function ydata = tsne(X, labels, no_dims, initial_dims, perplexity)
     
     % Run t-SNE
     if initial_solution
-        ydata = tsne_p(P, labels, ydata);
+        [ydata cost] = tsne_p(P, labels, ydata);
     else
-        ydata = tsne_p(P, labels, no_dims);
+        [ydata cost] = tsne_p(P, labels, no_dims);
     end
     
