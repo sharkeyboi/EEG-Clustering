@@ -1,4 +1,5 @@
-function [C] = RecreateKmeans(IDX,numbins,Iblur,D, waves, clusters, freq)
+function [C] = RecreateKmeans(IDX,numbins,pxx,D, clusters, freq)
+datalength = length(clusters);
 Z = linkage(D');
 cmap = colormap('jet');
 interval = floor(64/numbins);
@@ -9,14 +10,13 @@ subplot(2,1,1);
 [H, T,outPerm] = dendrogram(Z);
 meanpxx = [];
 for itr = 1:numbins
-currentpxx = mean(Iblur(:,find(IDX==itr)),2);
-meanpxx(:,itr) = currentpxx(1:100);
+meanpxx(:,itr) = mean(pxx(:,find(IDX==itr)),2);
 end
 
 for i = 1:numbins
     subplot(4,numbins,numbins*2+i)
 %     plot(freaks(1:maxBin),mean(Iblur(:,find(IDX==outPerm(i))),2));
-    plot(freq(1:100),meanpxx(:,outPerm(i)),'Color',C(outPerm(i),:));
+    plot(freq,meanpxx(:,outPerm(i)),'Color',C(outPerm(i),:));
     axis tight;%ylim([-2 6]);axis square;axis off;
     ylims(i,:) = get(gca,'YLim');
     hold on
@@ -34,10 +34,13 @@ for i = 1:numbins
 end
 subplot(4,1,4);
 for itr = 1:numbins
-    plot(1:length(waves), clusters(:,:,itr),'Color',C(itr,:));
-    axis([0 inf -2 2]);
+    plot(1:datalength, clusters(:,:,itr),'Color',C(itr,:));
+    
+    %Set the axis limits to be the min and max of the data
+    axis([0 inf min(min(clusters)) max(max(clusters))]);
     hold on;
 end
+drawnow
 % plot(ones(1,length(waves))*0.5);
 % hold on;
 % plot(ones(1,length(waves))*0.7);

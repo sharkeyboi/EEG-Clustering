@@ -1,9 +1,12 @@
-function [] = createheatmap(waves,numbins,clusters, P)
+function [] = createheatmap(clusters, P)
+    figure('units','normalized','outerposition',[0 0 1 1])
     imageP = 0;
-    C = {'k','b','r','g','y','c','m'};
+    cmap = colormap('jet');
+    interval = floor(64/size(clusters,3));
+    C = cmap(64:-interval:1,:);
     subaxis(2,1,1, 'SpacingVert', 0);
-    for itr = 1:numbins
-        plot(1:length(waves), clusters(:,:,itr),'Color',C{itr});
+    for itr = 1:size(clusters,3)
+        plot(1:length(clusters), clusters(:,:,itr),'Color',C(itr,:));
         hold on;
     end
 

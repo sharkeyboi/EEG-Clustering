@@ -1,1 +1,0 @@
-[coeff,score,latent,tsquared,explained]= pca(pxx');
