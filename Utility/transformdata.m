@@ -1,4 +1,4 @@
-function [pxx, f, pcascore, explained] = transformdata(dataset, order, filterlength)
+function [pxx, f, pcascore, explained] = transformdata(dataset)
 
 
 %%%%%%%%%%%% Periodogram %%%%%%%%%%%%%
@@ -12,8 +12,8 @@ Fs = 100;
 [pxx,f] = periodogram(dataset,hann(size(dataset,1)),size(dataset,1),Fs);
 pxx = log(pxx);
 
-pxx = sgolayfilt(pxx', order, filterlength);
-pxx = pxx';
+% pxx = sgolayfilt(pxx', order, filterlength);
+% pxx = pxx';
 
 %Only keep frequencies through 100 Hz
 %pxx = pxx(1:412,:);

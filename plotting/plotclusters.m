@@ -1,31 +1,19 @@
-function [] = plotclusters(clusteredWave, wave)
+function [] = plotclusters(idx, data, Y)
+clusteredWave = NewClustering(idx,max(idx),data);
 figure;
+subplot(2,1,1);
+datalength = length(clusteredWave);
 cmap = colormap('jet');
 interval = floor(64/size(clusteredWave,3));
 C = cmap(64:-interval:1,:);
-subaxis(size(clusteredWave,3)+1,1,1, 'SpacingVert', 0);
 
+for itr = 1:size(clusteredWave,3)
+plot(1:datalength, clusteredWave(:,:,itr),'Color',C(itr,:));
+%Set the axis limits to be the min and max of the data
+axis([0 inf min(min(clusteredWave)) max(max(clusteredWave))]);
+hold on;
+end
 
-% Plots first wave
-plot(1:length(clusteredWave), wave);
-ylabel('Wave');
-
-set(gca,'xtick',[])
-set(gca,'xticklabel',[])
-set(gca,'YTickLabel',[]);
-% axis([0 inf -2 2]);
-
-% Plots the 'sub-waves'
-for i=2:size(clusteredWave,3)+1
-
-    subaxis(size(clusteredWave,3)+1,1,i, 'SpacingVert', 0);
-    plot(1:length(clusteredWave), clusteredWave(:,:,i-1),'Color',C(i-1,:));
-%     axis([0 inf -2 2]);
-    ylabel(i-1);
-    if i < size(clusteredWave,3)+1
-        set(gca,'xtick',[])
-        set(gca,'xticklabel',[])
-    end
-    set(gca,'YTickLabel',[]);
-    
+subplot(2,1,2);
+tsnedata(idx,max(idx),Y);
 end
