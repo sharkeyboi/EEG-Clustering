@@ -1,4 +1,4 @@
-function [pxx, f, pcascore, explained, downsampled] = transformdata(dataset, order, filterlength)
+function [pxx, f, pcascore, explained] = transformdata(dataset, order, filterlength)
 
 
 %%%%%%%%%%%% Periodogram %%%%%%%%%%%%%
@@ -14,14 +14,15 @@ pxx = log(pxx);
 
 pxx = sgolayfilt(pxx', order, filterlength);
 pxx = pxx';
+
 %Only keep frequencies through 100 Hz
 %pxx = pxx(1:412,:);
 %f = f(1:412);
 %% Optional: amplify differences, by subtracting the mean spectrum
-pxx = pxx-repmat(mean(pxx,2),[1 size(pxx,2)]);
-
-%% Optional: zscore (whiten) the spectra
-pxx = zscore(pxx,[],1);
+% pxx = pxx-repmat(mean(pxx,2),[1 size(pxx,2)]);
+% 
+% %% Optional: zscore (whiten) the spectra
+% pxx = zscore(pxx,[],1);
 
 [~,pcascore,~,~,explained] = pca(pxx');
 
@@ -36,8 +37,4 @@ pxx = zscore(pxx,[],1);
 % 
 % bands = imgaussfilt(bands,smoothing);
 
-
-%% Downsamples data to make plotting faster
-
-downsampled = dataset(1:20:end,:);
 end

@@ -1,4 +1,4 @@
-function [] = plotcolors(numBins, clusteredWave, colors)
+function [] = plotcolors(numBins, clusteredWave, colors, totalwave)
 figure;
 
 % Plots the waveforms as separate

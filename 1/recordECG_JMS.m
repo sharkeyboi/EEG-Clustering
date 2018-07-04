@@ -1,0 +1,38 @@
+AI = analoginput('mcc',0);
+addchannel(AI,0:1);
+% addchannel(AI,1);
+
+allocate_traces=1000; % max nr of traces per callback (1 trace = 100s)
+AI.SamplesPerTrigger=10000; % 10 s zack-zack (allows accurate estimation of low freq)
+AI.SampleRate=1000; % in Hz
+
+figure(100)
+
+
+x = 1
+
+while x >= 1
+pause(1)
+start(AI)
+data = getdata(AI); % the smallest trace
+figure(100)
+subplot(2,1,1)
+plot(data(:,1))
+Fs = AI.SampleRate;   t = 0:1/Fs:10-(1/Fs);
+
+h = spectrum.periodogram;    % Create a  spectral estimator. 
+
+Hpsd = psd(h,data(:,1),'Fs',Fs);             % Calculate the PSD 
+subplot(2,1,2)
+plot(Hpsd)                           % Plot the PSD.
+xlim([0 70])
+Hpsd = psd(h,data(:,2),'Fs',Fs);             % Calculate the PSD 
+% HR = findpeaks(Hpsd.Data(11:max(find(Hpsd.Frequencies<6))))*60
+
+save([num2str(fix(clock))],'data')
+x = x+1;
+end
+
+stop(AI)
+
+% save([datestr(date),'_',num2str(x)],'data')

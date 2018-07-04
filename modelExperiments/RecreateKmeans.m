@@ -1,17 +1,20 @@
-function [C] = RecreateKmeans(IDX,numbins,pxx,D, clusters, freq)
+function [] = RecreateKmeans(IDX,numbins,pxx,D, clusters, freq, Y,folder, number)
 datalength = length(clusters);
 Z = linkage(D');
 cmap = colormap('jet');
 interval = floor(64/numbins);
 C = cmap(64:-interval:1,:);
 
-figure('units','normalized','outerposition',[0 0 1 1])
-subplot(2,1,1);
+currentfig = figure('units','normalized','outerposition',[0 0 1 1])
+subplot(2,2,1);
 [H, T,outPerm] = dendrogram(Z);
 meanpxx = [];
 for itr = 1:numbins
 meanpxx(:,itr) = mean(pxx(:,find(IDX==itr)),2);
 end
+
+subplot(2,2,2);
+tsnedata(IDX,numbins,Y);
 
 for i = 1:numbins
     subplot(4,numbins,numbins*2+i)
@@ -47,5 +50,5 @@ drawnow
 % hold on;
 % plot(ones(1,length(waves))*0.8);
 % hold on;
-
+saveas(currentfig,strcat(folder,num2str(number),'.png'));
 end

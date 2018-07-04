@@ -1,4 +1,4 @@
-figure;
+function [] = tsnedata(idx,numbins,Y)
 cmap = colormap('jet');
 interval = floor(64/numbins);
 C = cmap(64:-interval:1,:);
@@ -9,3 +9,4 @@ ignoredata = gscatter(Y(:,1),Y(:,2),idx, C,'.',10);
 
 % figure;
 % plot(data(:,sum(index)));
+end
