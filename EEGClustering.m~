@@ -1,9 +1,22 @@
 
-%% Identify Clusters in EEG signal using Spectral Clustering
+%% Identify Clusters in EEG signals using Spectral Clustering
 
 % Input:
-%   data: 
-function [idx] = EEGClustering(data)
+%   data: EEG Signals in the form (M x N), where M is the number of samples in each signal, and N is the number of signals.
+%   temporal: Indicates whether or not the signals are in temporal order,
+%   which can be used to improve clustering results.
+%   Fs: Sample Rate of the signals
+
+% Output:
     
+function [idx] = EEGClustering(data, temporal, Fs)
+    
+    % Convert the signals to the frequency domain using FFT
+    [pxx, f] = transformdata(data, Fs);
+    if temporal
+        plen = length(pxx);
+        time = (1:plen)/plen*((max(max(plen))-min(min(plen)))) / 2;
+        time = 
+    end
     
 end
