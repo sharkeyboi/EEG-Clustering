@@ -1,0 +1,9 @@
+
+%% Identify Clusters in EEG signal using Spectral Clustering
+
+% Input:
+%   data: 
+function [idx] = EEGClustering(data)
+    
+    
+end
